@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<RegionData>
+    <Region Key="R12412">
+        <DisplayName>Wien</DisplayName>
+        <Address>
+            <Street>Stephansplatz 1</Street>
+            <PostalCode>1010</PostalCode>
+            <City>Wien</City>
+        </Address>
+    </Region>
+    <Region Key="R412">
+        <Address>
+            <Street>Hauptplatz 1</Street>
+            <PostalCode>3910</PostalCode>
+            <City>Zwettl</City>
+        </Address>
+        <DisplayName>Waldviertel</DisplayName>
+    </Region>
+</RegionData>
