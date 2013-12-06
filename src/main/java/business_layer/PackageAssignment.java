@@ -5,8 +5,6 @@
 package business_layer;
 
 import entities.DeliveryWarehouse;
-import entities.Location;
-import entities.Package;
 import java.util.List;
 import org.apache.log4j.Logger;
 import repository.db.DbPackageRepository;
@@ -21,64 +19,61 @@ public class PackageAssignment implements IPackageAssignment {
     private DbWarehouseRepository whRepo = new DbWarehouseRepository();
     private DbPackageRepository packRepo = new DbPackageRepository();
     private final static Logger log = Logger.getLogger(PackageAssignment.class);
+    
+    
 
     /*
      * Get all warehouses from db and assign new package to nearest warehouse
      */
-    public void assignNewPackage(Package pack) {
+    @Override
+    public void assignNewPackage(entities.Package pack) {
+        log.info("assignNewPackage entered");
+        DeliveryWarehouse closestWarehouse = new DeliveryWarehouse();
+        double closestDistance = 1000000;		// setting high value to assure replacement ;-)
+        double currentDistance = 1000000;		// will be calculated anyway ;-)
         try {
-            Double distance = -1.0;
-            DeliveryWarehouse nearest = null;
-            List<DeliveryWarehouse> warehouses = whRepo.getAll();
-            Location packaddress = pack.getRecipient().getLocation();
-            Haversine hav = new Haversine();
+            List<DeliveryWarehouse> warehouses = whRepo.getAll();	// get all warehouses from the repo
+            if (warehouses != null && !warehouses.isEmpty()) {		// if-else to be sure there is >= warehouse on the list
 
-            for (DeliveryWarehouse wh : warehouses) {
-                Double temp = hav.haversine(packaddress.getLatitude(), packaddress.getLongitude(),
-                        wh.getLocation().getLatitude(), wh.getLocation().getLongitude());
-                if (temp < distance || distance == -1.0) {
-                    distance = temp;
-                    nearest = wh;
+                for (DeliveryWarehouse currentWarehouse : warehouses) {			// go through list of warehouses
+                    currentDistance = Math.pow((pack.getRecipient().getLocation().getLatitude() - currentWarehouse.getLocation().getLatitude()), 2) + Math.pow((pack.getRecipient().getLocation().getLongitude() - currentWarehouse.getLocation().getLongitude()), 2);	// calculate distance of given pack to current warehouse
+                    if (currentDistance < closestDistance) {		// found closer warehouse
+                        log.info("closer warehouse found");
+                        closestDistance = currentDistance;		// update closestDistance for further search
+                        closestWarehouse = currentWarehouse;		// update closestWarehouse 
+                    }							// no need for else because in false case closestWarehouse stays the same 
                 }
-                log.info(distance);
-                pack.setWarehouse(nearest);
+                pack.setWarehouse(closestWarehouse);		// assign the closest warehouse to the given pack
+            } else {
+                log.warn("List of Warehouses empty.");
             }
         } catch (Exception ex) {
             log.error(ex.getMessage());
             throw new BLException(ex);
         }
-
-
     }
 
     /*
      * Get all packages and warehouses from database and assign them properly
      */
+    @Override
     public void reassignAll() {
-        try {            
-            // get packages and warehouses from db
-            List<DeliveryWarehouse> warehouses = whRepo.getAll();
-            List<Package> packages = packRepo.getAll();
-
-            Double distance = -1.0;
-            DeliveryWarehouse nearest = null;
-            Haversine hav = new Haversine();
-            
-            // assign each package to nearest warehouse
-            for (Package pack : packages) {
-                Location packaddress = pack.getRecipient().getLocation();
-
-                for (DeliveryWarehouse wh : warehouses) {
-                    Double temp = hav.haversine(packaddress.getLatitude(), packaddress.getLongitude(),
-                            wh.getLocation().getLatitude(), wh.getLocation().getLongitude());
-                    if (temp < distance || distance == -1.0) {
-                        distance = temp;
-                        nearest = wh;
-                    }
-                    pack.setWarehouse(nearest);
+        log.info("reassignAll entered");
+        //Package currentPack = new Package();
+        try {
+            List<entities.Package> packages = packRepo.getAll();
+            if (packages != null && !packages.isEmpty()) {
+                for (entities.Package currentPack : packages) {				// go through list of packages
+                    // assign to region
+                    PackageAssignment assignment = new PackageAssignment();	// ### Madeleine: passt das so mit dem Konstruktor?
+                    // ### ich hab das aus dem aktuellen aufruf der methode innerhalb des "add"
+                    // ### stiebitzt
+                    assignment.assignNewPackage(currentPack);		// every single package is being assigned closest warehouse
+                    packRepo.updatePackage(currentPack);
                 }
+            } else {
+                log.warn("No packages found.");
             }
-
         } catch (Exception ex) {
             log.error(ex.getMessage());
             throw new BLException(ex);
