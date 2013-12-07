@@ -4,7 +4,7 @@
  */
 package soapshippingservice;
 
-import business_layer.PackageBL;
+import business_layer.PackageImport;
 import entities.Location;
 import entities.Recipient;
 import javax.jws.WebService;
@@ -22,17 +22,19 @@ public class ShippingService {
     public void addPackage(org.skspackage.schema._2013.shippingservice.Pack pack) {
 
         try {
-            log.info("addPackage entered");
+            log.info("soap request received");
+            //convert it to entities.Package
             entities.Package p = new entities.Package();
             Location loc = new Location();
             loc.setStreet(pack.getAddress().getValue().getStreet().getValue());
             loc.setPostalcode(pack.getAddress().getValue().getPostalCode().getValue());
             loc.setCity(pack.getAddress().getValue().getCity().getValue());
             loc.setCountry(pack.getAddress().getValue().getCountry().getValue());
-            p.setRecipient(new Recipient("unknown", loc));
+            p.setRecipient(new Recipient("", loc));
             p.setDelivered(false);
-            PackageBL bl = new PackageBL();
-            bl.add(p);
+            
+            PackageImport importer = new PackageImport();
+            importer.importPackage(p);
             log.info("soap request processed");
         } catch (NullPointerException ex) {
             log.error(ex.getMessage());

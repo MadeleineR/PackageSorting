@@ -4,9 +4,13 @@
  */
 package rest;
 
-import business_layer.WarehouseBL;
+import business_layer.RegionImport;
+import entities.DeliveryWarehouse;
+import entities.Location;
 import generated.RegionData;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -51,12 +55,27 @@ public class RegionService {
             log.info("post request received");
             JAXBContext jaxbContext = JAXBContext.newInstance(RegionData.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
+            
+            // read data from xml
             StringReader reader = new StringReader(content);
             RegionData regions = (RegionData) unmarshaller.unmarshal(reader);
+            
+            List<DeliveryWarehouse> warehouses = new ArrayList<DeliveryWarehouse>();
+            for (RegionData.Region region : regions.getRegion()) {
+                // convert it to DeliveryWarehouse
+                DeliveryWarehouse warehouse = new DeliveryWarehouse();
+                warehouse.setRegionKey(region.getKey());
+                Location loc = new Location();
+                loc.setPostalcode(region.getAddress().getPostalCode());
+                loc.setCity(region.getAddress().getCity());
+                loc.setStreet(region.getAddress().getStreet());
+                warehouse.setLocation(loc);
+                warehouses.add(warehouse);
+            }
 
-            WarehouseBL bl = new WarehouseBL();
-            bl.add(regions);
+            RegionImport regionImporter = new RegionImport();
+            regionImporter.importRegions(warehouses);
+            
             log.info("post request processed");
 
         } catch (JAXBException ex) {

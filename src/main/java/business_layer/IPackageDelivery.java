@@ -4,17 +4,12 @@
  */
 package business_layer;
 
-import java.util.List;
-
 /**
  *
  * @author Madeleine
  */
-public interface IBusinessLayer<T> {
+interface IPackageDelivery<T> {
     
-    void add(T object);
-    void delete(T object);
-    List<T> getAll();
-    T getById(long id);
+    T getPackagesForRegion(String key);
     
 }

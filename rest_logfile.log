@@ -3187,3 +3187,139 @@ Response SOAP Message =
 2013-12-06 09:58:38 INFO  DbWarehouseRepository:142 - Warehouses found
 2013-12-06 09:58:38 INFO  DbWarehouseRepository:160 - getWarehouseByLocation entered
 2013-12-06 09:58:38 INFO  DbWarehouseRepository:170 - Warehouses by location found
+2013-12-07 15:46:01 INFO  DbPackageRepository:38 - add entered
+2013-12-07 15:46:01 INFO  DbPackageRepository:45 - Package added
+2013-12-07 15:46:01 INFO  DbPackageRepository:83 - getById entered
+2013-12-07 15:46:01 INFO  DbPackageRepository:90 - Package found
+2013-12-07 15:46:01 INFO  DbPackageRepository:61 - delete entered
+2013-12-07 15:46:01 INFO  DbPackageRepository:68 - Package delete
+2013-12-07 15:46:02 INFO  DbPackageRepository:108 - getAll entered
+2013-12-07 15:46:02 INFO  DbPackageRepository:117 - List of all packages found
+2013-12-07 15:46:02 INFO  DbPackageRepository:162 - getPackagesByWarehouseKey entered
+2013-12-07 15:46:02 INFO  DbPackageRepository:172 - Packages by warehouse found
+2013-12-07 15:46:02 INFO  DbPackageRepository:134 - getPackagesByRecipient entered
+2013-12-07 15:46:02 INFO  DbPackageRepository:144 - Packages by recipient found
+2013-12-07 15:46:03 INFO  DbPersonRepository:84 - add entered
+2013-12-07 15:46:03 INFO  DbPersonRepository:91 - Person added
+2013-12-07 15:46:03 INFO  DbPersonRepository:130 - getById entered
+2013-12-07 15:46:03 INFO  DbPersonRepository:137 - Person found
+2013-12-07 15:46:04 INFO  DbPersonRepository:107 - delete entered
+2013-12-07 15:46:04 INFO  DbPersonRepository:114 - Person deleted
+2013-12-07 15:46:04 INFO  DbPersonRepository:153 - getAll found
+2013-12-07 15:46:04 INFO  DbPersonRepository:162 - Persons found
+2013-12-07 15:46:04 INFO  DbPersonRepository:31 - getPersonsByName entered
+2013-12-07 15:46:04 INFO  DbPersonRepository:41 - Persons found
+2013-12-07 15:46:04 INFO  DbPersonRepository:59 - getPersonsByWarehouse entered
+2013-12-07 15:46:04 INFO  DbPersonRepository:68 - Persons found
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:39 - Add entered
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:46 - Warehouse added
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:84 - getById entered
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:91 - Warehouse found
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:61 - Delete entered
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:68 - Warehouse deleted
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:133 - getAll entered
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:142 - Warehouses found
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:160 - getWarehouseByLocation entered
+2013-12-07 15:46:05 INFO  DbWarehouseRepository:170 - Warehouses by location found
+2013-12-07 17:24:24 INFO  DbPackageRepository:38 - add entered
+2013-12-07 17:24:24 INFO  DbPackageRepository:45 - Package added
+2013-12-07 17:24:24 INFO  DbPackageRepository:61 - delete entered
+2013-12-07 17:24:24 INFO  DbPackageRepository:68 - Package delete
+2013-12-07 17:24:24 INFO  DbPackageRepository:83 - getById entered
+2013-12-07 17:24:24 INFO  DbPackageRepository:90 - Package found
+2013-12-07 17:24:24 INFO  DbPackageRepository:108 - getAll entered
+2013-12-07 17:24:24 INFO  DbPackageRepository:117 - List of all packages found
+2013-12-07 17:24:25 INFO  DbPackageRepository:162 - getPackagesByWarehouseKey entered
+2013-12-07 17:24:25 INFO  DbPackageRepository:172 - Packages by warehouse found
+2013-12-07 17:24:25 INFO  DbPackageRepository:134 - getPackagesByRecipient entered
+2013-12-07 17:24:25 INFO  DbPackageRepository:144 - Packages by recipient found
+2013-12-07 17:24:25 INFO  DbPersonRepository:84 - add entered
+2013-12-07 17:24:25 INFO  DbPersonRepository:91 - Person added
+2013-12-07 17:24:25 INFO  DbPersonRepository:107 - delete entered
+2013-12-07 17:24:25 INFO  DbPersonRepository:114 - Person deleted
+2013-12-07 17:24:25 INFO  DbPersonRepository:130 - getById entered
+2013-12-07 17:24:25 INFO  DbPersonRepository:137 - Person found
+2013-12-07 17:24:25 INFO  DbPersonRepository:153 - getAll found
+2013-12-07 17:24:25 INFO  DbPersonRepository:162 - Persons found
+2013-12-07 17:24:25 INFO  DbPersonRepository:31 - getPersonsByName entered
+2013-12-07 17:24:25 INFO  DbPersonRepository:41 - Persons found
+2013-12-07 17:24:25 INFO  DbPersonRepository:59 - getPersonsByWarehouse entered
+2013-12-07 17:24:25 INFO  DbPersonRepository:68 - Persons found
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:39 - Add entered
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:46 - Warehouse added
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:61 - Delete entered
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:68 - Warehouse deleted
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:84 - getById entered
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:91 - Warehouse found
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:133 - getAll entered
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:142 - Warehouses found
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:160 - getWarehouseByLocation entered
+2013-12-07 17:24:25 INFO  DbWarehouseRepository:170 - Warehouses by location found
+2013-12-07 17:59:07 INFO  DbPackageRepository:61 - delete entered
+2013-12-07 17:59:07 INFO  DbPackageRepository:68 - Package delete
+2013-12-07 17:59:07 INFO  DbPackageRepository:108 - getAll entered
+2013-12-07 17:59:07 INFO  DbPackageRepository:117 - List of all packages found
+2013-12-07 17:59:10 INFO  DbPackageRepository:38 - add entered
+2013-12-07 17:59:10 INFO  DbPackageRepository:45 - Package added
+2013-12-07 17:59:10 INFO  DbPackageRepository:83 - getById entered
+2013-12-07 17:59:10 INFO  DbPackageRepository:90 - Package found
+2013-12-07 17:59:11 INFO  DbPackageRepository:134 - getPackagesByRecipient entered
+2013-12-07 17:59:11 INFO  DbPackageRepository:144 - Packages by recipient found
+2013-12-07 17:59:11 INFO  DbPackageRepository:162 - getPackagesByWarehouseKey entered
+2013-12-07 17:59:11 INFO  DbPackageRepository:172 - Packages by warehouse found
+2013-12-07 17:59:11 INFO  DbPersonRepository:107 - delete entered
+2013-12-07 17:59:11 INFO  DbPersonRepository:114 - Person deleted
+2013-12-07 17:59:11 INFO  DbPersonRepository:153 - getAll found
+2013-12-07 17:59:11 INFO  DbPersonRepository:162 - Persons found
+2013-12-07 17:59:11 INFO  DbPersonRepository:84 - add entered
+2013-12-07 17:59:11 INFO  DbPersonRepository:91 - Person added
+2013-12-07 17:59:11 INFO  DbPersonRepository:130 - getById entered
+2013-12-07 17:59:11 INFO  DbPersonRepository:137 - Person found
+2013-12-07 17:59:14 INFO  DbPersonRepository:59 - getPersonsByWarehouse entered
+2013-12-07 17:59:14 INFO  DbPersonRepository:68 - Persons found
+2013-12-07 17:59:14 INFO  DbPersonRepository:31 - getPersonsByName entered
+2013-12-07 17:59:14 INFO  DbPersonRepository:41 - Persons found
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:61 - Delete entered
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:68 - Warehouse deleted
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:133 - getAll entered
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:142 - Warehouses found
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:39 - Add entered
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:46 - Warehouse added
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:84 - getById entered
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:91 - Warehouse found
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:160 - getWarehouseByLocation entered
+2013-12-07 17:59:14 INFO  DbWarehouseRepository:170 - Warehouses by location found
+2013-12-07 18:19:39 INFO  DbPackageRepository:61 - delete entered
+2013-12-07 18:19:40 INFO  DbPackageRepository:68 - Package delete
+2013-12-07 18:19:40 INFO  DbPackageRepository:83 - getById entered
+2013-12-07 18:19:40 INFO  DbPackageRepository:90 - Package found
+2013-12-07 18:19:40 INFO  DbPackageRepository:108 - getAll entered
+2013-12-07 18:19:40 INFO  DbPackageRepository:117 - List of all packages found
+2013-12-07 18:19:40 INFO  DbPackageRepository:38 - add entered
+2013-12-07 18:19:40 INFO  DbPackageRepository:45 - Package added
+2013-12-07 18:19:40 INFO  DbPackageRepository:162 - getPackagesByWarehouseKey entered
+2013-12-07 18:19:40 INFO  DbPackageRepository:172 - Packages by warehouse found
+2013-12-07 18:19:40 INFO  DbPackageRepository:134 - getPackagesByRecipient entered
+2013-12-07 18:19:40 INFO  DbPackageRepository:144 - Packages by recipient found
+2013-12-07 18:19:40 INFO  DbPersonRepository:107 - delete entered
+2013-12-07 18:19:40 INFO  DbPersonRepository:114 - Person deleted
+2013-12-07 18:19:40 INFO  DbPersonRepository:130 - getById entered
+2013-12-07 18:19:40 INFO  DbPersonRepository:137 - Person found
+2013-12-07 18:19:40 INFO  DbPersonRepository:153 - getAll found
+2013-12-07 18:19:40 INFO  DbPersonRepository:162 - Persons found
+2013-12-07 18:19:40 INFO  DbPersonRepository:84 - add entered
+2013-12-07 18:19:40 INFO  DbPersonRepository:91 - Person added
+2013-12-07 18:19:40 INFO  DbPersonRepository:31 - getPersonsByName entered
+2013-12-07 18:19:40 INFO  DbPersonRepository:41 - Persons found
+2013-12-07 18:19:40 INFO  DbPersonRepository:59 - getPersonsByWarehouse entered
+2013-12-07 18:19:40 INFO  DbPersonRepository:68 - Persons found
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:61 - Delete entered
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:68 - Warehouse deleted
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:84 - getById entered
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:91 - Warehouse found
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:133 - getAll entered
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:142 - Warehouses found
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:39 - Add entered
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:46 - Warehouse added
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:160 - getWarehouseByLocation entered
+2013-12-07 18:19:41 INFO  DbWarehouseRepository:170 - Warehouses by location found

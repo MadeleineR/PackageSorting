@@ -4,15 +4,15 @@
  */
 package soapdeliveryservice;
 
-import business_layer.PackageBL;
+import business_layer.PackageDelivery;
 import entities.Location;
 import java.util.List;
 import javax.jws.WebService;
 import org.apache.log4j.Logger;
 import org.skspackage.schema._2013.deliveryservice.Address;
 import org.skspackage.schema._2013.deliveryservice.ArrayOfPackage;
-import org.skspackage.schema._2013.deliveryservice.Package;
 import org.skspackage.schema._2013.deliveryservice.ObjectFactory;
+import entities.Package;
 
 /**
  *
@@ -27,14 +27,14 @@ public class DeliveryService {
 
         try {
             log.info("getPackagesForRegion entered");
-            PackageBL pbl = new PackageBL();
-            List<entities.Package> plist = pbl.getPackagesByWarehouseKey(regionKey);
+            PackageDelivery delivery = new PackageDelivery();
+            List<Package> packs = delivery.getPackagesForRegion(regionKey);
+            
             ArrayOfPackage array = new ArrayOfPackage();
-
-            for (entities.Package p : plist) {
-                // Package umwandeln + ans Array hängen
+            for (Package p : packs){
+             // Package umwandeln + ans Array hängen
                 Location loc = p.getRecipient().getLocation();
-                Package pack = new Package();
+                org.skspackage.schema._2013.deliveryservice.Package pack = new org.skspackage.schema._2013.deliveryservice.Package();
                 ObjectFactory factory = new ObjectFactory();
                 Address address = new Address();
                 address.setCity(factory.createAddressCity(loc.getCity()));
@@ -42,10 +42,7 @@ public class DeliveryService {
                 address.setPostalCode(factory.createAddressPostalCode(loc.getPostalcode()));
                 address.setStreet(factory.createAddressStreet(loc.getStreet()));
                 pack.setAddress(factory.createAddress(address));
-                array.getPackage().add(pack);                
-                // Package als ausgeliefert markieren
-                p.setDelivered(true);
-                pbl.updatePackage(p);
+                array.getPackage().add(pack);
             }
             log.info("soap request processed");
             return array;
