@@ -20,8 +20,9 @@ import repository.interfaces.IPackageRepository;
  *
  * @author Madeleine
  */
-public class DbPackageRepository implements IPackageRepository {
 
+public class DbPackageRepository implements IPackageRepository {
+    
     private EntityManager em;
     private final static Logger log = Logger.getLogger(DbPackageRepository.class);
 
@@ -29,11 +30,11 @@ public class DbPackageRepository implements IPackageRepository {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("pu_package_sorting");
         em = factory.createEntityManager();
     }
-    
+
     public DbPackageRepository(EntityManager em) {
         this.em = em;
-    }
-
+    }  
+    
     public void add(Package object) {
         log.info("add entered");
         EntityTransaction transaction = null;
@@ -44,14 +45,14 @@ public class DbPackageRepository implements IPackageRepository {
             transaction.commit();
             log.info("Package added");
 
-        } catch (EntityExistsException ex) { 
+        } catch (EntityExistsException ex) {
             log.error("Package exists already. Rollback initiated.");
             throw new RepositoryException(ex);
-        } catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             log.error("Could not begin or commit transaction");
             throw new RepositoryException(ex);
         } finally {
-            if(transaction.isActive()){
+            if (transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -69,7 +70,7 @@ public class DbPackageRepository implements IPackageRepository {
         } catch (IllegalArgumentException ex) {
             log.error("Package could not be deleted. Rollback initiated.");
             throw new RepositoryException(ex);
-        } catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             log.error("Could not begin or commit transaction");
             throw new RepositoryException(ex);
         } finally {
@@ -89,20 +90,18 @@ public class DbPackageRepository implements IPackageRepository {
             transaction.commit();
             log.info("Package found");
             return result;
-        } catch (IllegalArgumentException ex) {      
+        } catch (IllegalArgumentException ex) {
             log.error("first argument does not denote an entity type or the second argument is not a valid type for that entity’s primary key or is null");
             throw new RepositoryException(ex);
-        } catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             log.error("Could not begin or commit transaction");
             throw new RepositoryException(ex);
         } finally {
-            if(transaction.isActive()){
+            if (transaction.isActive()) {
                 transaction.rollback();
             }
         }
     }
-    
-    
 
     public List<Package> getAll() {
         log.info("getAll entered");
@@ -117,14 +116,14 @@ public class DbPackageRepository implements IPackageRepository {
             log.info("List of all packages found");
             return result;
 
-        } catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             log.error("Could not begin or commit transaction");
             throw new RepositoryException(ex);
-        }  catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             log.error("the query string is found to be invalid");
             throw new RepositoryException(ex);
         } finally {
-            if(transaction.isActive()){
+            if (transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -144,14 +143,14 @@ public class DbPackageRepository implements IPackageRepository {
             log.info("Packages by recipient found");
             return result;
 
-        } catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             log.error("Could not begin or commit transaction");
             throw new RepositoryException(ex);
-        }  catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             log.error("the query string is found to be invalid");
             throw new RepositoryException(ex);
         } finally {
-            if(transaction.isActive()){
+            if (transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -172,20 +171,20 @@ public class DbPackageRepository implements IPackageRepository {
             log.info("Packages by warehouse found");
             return result;
 
-        } catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             log.error("Could not begin or commit transaction");
             throw new RepositoryException(ex);
-        }  catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             log.error("the query string is found to be invalid");
             throw new RepositoryException(ex);
         } finally {
-            if(transaction.isActive()){
+            if (transaction.isActive()) {
                 transaction.rollback();
             }
         }
     }
-    
-    public void updatePackage(Package pack){
+
+    public void updatePackage(Package pack) {
         log.info("updatePackage entered");
         EntityTransaction transaction = null;
         try {
@@ -197,7 +196,7 @@ public class DbPackageRepository implements IPackageRepository {
         } catch (IllegalArgumentException ex) {
             log.error("Package could not be updated. Rollback initiated.");
             throw new RepositoryException(ex);
-        } catch (IllegalStateException ex){
+        } catch (IllegalStateException ex) {
             log.error("Could not begin or commit transaction");
             throw new RepositoryException(ex);
         } finally {
@@ -206,4 +205,5 @@ public class DbPackageRepository implements IPackageRepository {
             }
         }
     }
+
 }

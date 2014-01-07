@@ -4,6 +4,9 @@
  */
 package business_layer;
 
+import entities.DeliveryWarehouse;
+import java.util.List;
+
 
 /**
  *
@@ -11,7 +14,7 @@ package business_layer;
  */
 public interface IPackageAssignment {
     
-    public void assignNewPackage(entities.Package pack);
-    public void reassignAll();
+    public void assignNewPackage(entities.Package pack, List<DeliveryWarehouse> warehouses);
+    public void reassignAll(List<entities.Package> packs, List<DeliveryWarehouse> warehouses);
     
 }

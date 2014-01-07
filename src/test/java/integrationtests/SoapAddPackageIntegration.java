@@ -17,6 +17,7 @@ import javax.xml.soap.SOAPPart;
 import static junit.framework.Assert.assertEquals;
 import junit.framework.TestCase;
 import repository.db.DbPackageRepository;
+import repository.db.DbPackageRepositoryT;
 
 /**
  *

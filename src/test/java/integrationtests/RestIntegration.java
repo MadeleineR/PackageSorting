@@ -17,6 +17,7 @@ import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import junit.framework.TestCase;
 import repository.db.DbWarehouseRepository;
+import repository.db.DbWarehouseRepositoryT;
 
 /**
  *

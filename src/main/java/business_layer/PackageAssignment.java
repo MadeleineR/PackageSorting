@@ -5,7 +5,11 @@
 package business_layer;
 
 import entities.DeliveryWarehouse;
+import entities.Package;
 import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.apache.log4j.Logger;
 import repository.db.DbPackageRepository;
 import repository.db.DbWarehouseRepository;
@@ -14,25 +18,22 @@ import repository.db.DbWarehouseRepository;
  *
  * @author Madeleine
  */
+@Named(value="packAssign")
+@ApplicationScoped
 public class PackageAssignment implements IPackageAssignment {
 
-    private DbWarehouseRepository whRepo = new DbWarehouseRepository();
-    private DbPackageRepository packRepo = new DbPackageRepository();
     private final static Logger log = Logger.getLogger(PackageAssignment.class);
     
-    
-
     /*
      * Get all warehouses from db and assign new package to nearest warehouse
      */
     @Override
-    public void assignNewPackage(entities.Package pack) {
+    public void assignNewPackage(Package pack, List<DeliveryWarehouse> warehouses) {
         log.info("assignNewPackage entered");
         DeliveryWarehouse closestWarehouse = new DeliveryWarehouse();
         double closestDistance = 1000000;		// setting high value to assure replacement ;-)
         double currentDistance = 1000000;		// will be calculated anyway ;-)
         try {
-            List<DeliveryWarehouse> warehouses = whRepo.getAll();	// get all warehouses from the repo
             if (warehouses != null && !warehouses.isEmpty()) {		// if-else to be sure there is >= warehouse on the list
 
                 for (DeliveryWarehouse currentWarehouse : warehouses) {			// go through list of warehouses
@@ -57,19 +58,17 @@ public class PackageAssignment implements IPackageAssignment {
      * Get all packages and warehouses from database and assign them properly
      */
     @Override
-    public void reassignAll() {
+    public void reassignAll(List<Package> packages, List<DeliveryWarehouse> warehouses) {
         log.info("reassignAll entered");
         //Package currentPack = new Package();
         try {
-            List<entities.Package> packages = packRepo.getAll();
             if (packages != null && !packages.isEmpty()) {
                 for (entities.Package currentPack : packages) {				// go through list of packages
                     // assign to region
                     PackageAssignment assignment = new PackageAssignment();	// ### Madeleine: passt das so mit dem Konstruktor?
                     // ### ich hab das aus dem aktuellen aufruf der methode innerhalb des "add"
                     // ### stiebitzt
-                    assignment.assignNewPackage(currentPack);		// every single package is being assigned closest warehouse
-                    packRepo.updatePackage(currentPack);
+                    assignment.assignNewPackage(currentPack, warehouses);		// every single package is being assigned closest warehouse
                 }
             } else {
                 log.warn("No packages found.");

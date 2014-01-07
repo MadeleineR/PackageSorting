@@ -29,11 +29,10 @@ public class MockPackageAssignment implements IPackageAssignment {
     /*
      * Get all packages and warehouses from database and assign them (MOCK!)
      */
-    public void reassignAll() {
+    public void reassignAll(List<Package> packages, List<DeliveryWarehouse> warehouses) {
         try {
             log.info("reassignAll entered");
             for (Package p : packRepo.getAll()) {
-                List<DeliveryWarehouse> warehouses = whRepo.getWarehouseByKey(key);
                 if (warehouses != null && !warehouses.isEmpty()) {
                     p.setWarehouse(warehouses.get(0));
                     packRepo.updatePackage(p);
@@ -52,9 +51,8 @@ public class MockPackageAssignment implements IPackageAssignment {
     /*
      * Get all warehouses from db and assign new package to warehouse (MOCK!)
      */
-    public void assignNewPackage(Package pack) {
+    public void assignNewPackage(Package pack, List<DeliveryWarehouse> warehouses) {
         try {
-            List<DeliveryWarehouse> warehouses = whRepo.getWarehouseByKey(key);
             if (warehouses != null && !warehouses.isEmpty()) {
                 pack.setWarehouse(warehouses.get(0));
             } else {

@@ -7,9 +7,9 @@ package business_layer;
 import GeoDataService.GoogleGeocodingService;
 import entities.DeliveryWarehouse;
 import entities.Location;
-import generated.RegionData;
 import java.util.List;
 import org.apache.log4j.Logger;
+import repository.db.DbPackageRepository;
 import repository.db.DbWarehouseRepository;
 import repository.interfaces.IWarehouseRepository;
 
@@ -20,7 +20,8 @@ import repository.interfaces.IWarehouseRepository;
 public class RegionImport implements IRegionImport<List<DeliveryWarehouse>>{
     
     private final static Logger log = Logger.getLogger(RegionImport.class);
-    private IWarehouseRepository repo = new DbWarehouseRepository();
+    private IWarehouseRepository whRepo = new DbWarehouseRepository();
+    private DbPackageRepository packRepo = new DbPackageRepository();
 
     @Override
     public void importRegions(List<DeliveryWarehouse> warehouses) {
@@ -34,17 +35,17 @@ public class RegionImport implements IRegionImport<List<DeliveryWarehouse>>{
 
                 if (loc.getLatitude() != 1000 && loc.getLongitude() != 1000) {  // check if coordinates were set
                     // add to db
-                    repo.add(warehouse);
+                    whRepo.add(warehouse);
                     log.info("Warehouse imported");
                     // resort all packages
                     PackageAssignment assignment = new PackageAssignment();
-                    assignment.reassignAll();
+                    assignment.reassignAll(packRepo.getAll(), whRepo.getAll());
                     log.info("Packages resorted");
                 } else {
                     log.warn("longitude and latitude undefinied");
                 }
 
-                for (DeliveryWarehouse wh : repo.getAll()) {
+                for (DeliveryWarehouse wh : whRepo.getAll()) {
                     log.info(wh.getRegionKey());
                     log.info(wh.getLocation().getStreet());
                     log.info(wh.getLocation().getPostalcode());

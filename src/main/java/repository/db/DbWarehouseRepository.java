@@ -21,6 +21,7 @@ import repository.interfaces.IWarehouseRepository;
  *
  * @author Madeleine
  */
+
 public class DbWarehouseRepository implements IWarehouseRepository {
 
     private EntityManager em;
@@ -34,7 +35,7 @@ public class DbWarehouseRepository implements IWarehouseRepository {
     public DbWarehouseRepository(EntityManager em){
         this.em = em;
     }
-
+    
     public void add(DeliveryWarehouse object) {
         log.info("Add entered");
         EntityTransaction transaction = null;

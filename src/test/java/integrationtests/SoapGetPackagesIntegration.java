@@ -24,7 +24,9 @@ import static junit.framework.Assert.assertEquals;
 import junit.framework.TestCase;
 import org.w3c.dom.NodeList;
 import repository.db.DbPackageRepository;
+import repository.db.DbPackageRepositoryT;
 import repository.db.DbWarehouseRepository;
+import repository.db.DbWarehouseRepositoryT;
 
 /**
  *
